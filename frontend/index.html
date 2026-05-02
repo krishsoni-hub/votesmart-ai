@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoteSmart AI - Your Personal Election Assistant</title>
+    <!-- Modern Typography: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-check-to-slot"></i>
+            <span>VoteSmart AI</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#flashcards">Learn</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+        <button class="nav-btn" onclick="openChatbot()">Start Now</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Smart Voting <span class="highlight">Starts Here</span></h1>
+            <p>Your personal, private, and secure election assistant. Get voting guides, check your eligibility, detect fake news, and compare candidates instantly.</p>
+            <button class="cta-btn" onclick="openChatbot()">
+                Chat with Assistant <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+        
+        <!-- Chatbot Interface -->
+        <div id="chatbot" class="chatbot-container glass-panel">
+            <div class="chatbot-header">
+                <i class="fa-solid fa-robot"></i> VoteSmart Assistant
+            </div>
+            
+            <!-- Quick Action Buttons -->
+            <div class="quick-actions">
+                <button class="quick-btn" onclick="sendQuickMessage('Check Eligibility')">Check Eligibility</button>
+                <button class="quick-btn" onclick="sendQuickMessage('How to Vote')">How to Vote</button>
+                <button class="quick-btn" onclick="sendQuickMessage('Compare Candidates')">Compare Candidates</button>
+                <button class="quick-btn" onclick="sendQuickMessage('Detect Fake News')">Fake News</button>
+            </div>
+
+            <div class="chat-window" id="chat-window">
+                <div class="message bot">
+                    Hello! I'm your VoteSmart AI assistant. How can I help you today? You can ask me to check your eligibility, compare candidates, or guide you on how to vote.
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <button id="voice-btn" class="icon-btn tooltip" aria-label="Voice Input">
+                    <i class="fa-solid fa-microphone"></i>
+                </button>
+                <input type="text" id="chat-input" placeholder="Type your message here..." autocomplete="off">
+                <button id="send-btn" class="icon-btn primary" aria-label="Send Message">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Cards Section -->
+    <section id="features" class="features-section">
+        <div class="section-header">
+            <h2>Empowering Voters with AI</h2>
+            <p>Everything you need to make an informed decision.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card glass-panel">
+                <div class="feature-icon"><i class="fa-solid fa-user-check"></i></div>
+                <h3>Eligibility Checker</h3>
+                <p>Instantly find out if you meet the requirements to vote based on age and location.</p>
+            </div>
+            <div class="feature-card glass-panel">
+                <div class="feature-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                <h3>Voting Guide</h3>
+                <p>Step-by-step instructions from registration to casting your vote at the booth.</p>
+            </div>
+            <div class="feature-card glass-panel">
+                <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Fake News Detector</h3>
+                <p>Verify viral messages and forwarded content to ensure you get accurate information.</p>
+            </div>
+            <div class="feature-card glass-panel">
+                <div class="feature-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                <h3>Candidate Comparison</h3>
+                <p>Compare candidates side-by-side on education, records, and manifestos.</p>
+            </div>
+            <div class="feature-card glass-panel">
+                <div class="feature-icon"><i class="fa-solid fa-building-flag"></i></div>
+                <h3>Polling Booth Locator</h3>
+                <p>Find the exact address of your designated voting center instantly.</p>
+            </div>
+            <div class="feature-card glass-panel">
+                <div class="feature-icon"><i class="fa-solid fa-bell"></i></div>
+                <h3>Smart Reminders</h3>
+                <p>Get notified about upcoming election dates, deadlines, and registration.</p>
+            </div>
+            <div class="feature-card glass-panel">
+                <div class="feature-icon"><i class="fa-solid fa-id-card"></i></div>
+                <h3>Voter ID Guide</h3>
+                <p>Learn how to apply, correct, or download your digital Voter ID (EPIC).</p>
+            </div>
+            <div class="feature-card glass-panel">
+                <div class="feature-icon"><i class="fa-solid fa-language"></i></div>
+                <h3>Hinglish Support</h3>
+                <p>Chat naturally in English or Hinglish—our AI understands your preferred language.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flashcards Learning Section -->
+    <section id="flashcards" class="flashcards-section" style="padding: 80px 5%; max-width: 1200px; margin: 0 auto; text-align: center;">
+        <div class="section-header">
+            <h2>Flashcards Learning</h2>
+            <p>Tap a card to flip and learn essential voting concepts.</p>
+        </div>
+        <div class="flashcards-grid" style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
+            
+            <div class="flashcard-container" onclick="this.classList.toggle('flipped')">
+                <div class="flashcard">
+                    <div class="flashcard-front glass-panel">
+                        <i class="fa-solid fa-question-circle"></i>
+                        <h3>What is Voting?</h3>
+                    </div>
+                    <div class="flashcard-back glass-panel">
+                        <p>Voting is a democratic right where citizens elect leaders to represent them in the government.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flashcard-container" onclick="this.classList.toggle('flipped')">
+                <div class="flashcard">
+                    <div class="flashcard-front glass-panel">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <h3>Minimum Age</h3>
+                    </div>
+                    <div class="flashcard-back glass-panel">
+                        <p>You must be at least 18 years old on the qualifying date (usually Jan 1st of the election year) to vote in India.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flashcard-container" onclick="this.classList.toggle('flipped')">
+                <div class="flashcard">
+                    <div class="flashcard-front glass-panel">
+                        <i class="fa-solid fa-address-card"></i>
+                        <h3>Voter ID (EPIC)</h3>
+                    </div>
+                    <div class="flashcard-back glass-panel">
+                        <p>EPIC stands for Electors Photo Identity Card. It's your official proof of registration as a voter.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flashcard-container" onclick="this.classList.toggle('flipped')">
+                <div class="flashcard">
+                    <div class="flashcard-front glass-panel">
+                        <i class="fa-solid fa-person-booth"></i>
+                        <h3>Election Process</h3>
+                    </div>
+                    <div class="flashcard-back glass-panel">
+                        <p>Check name on roll → Bring Voter ID to booth → Verify ID → Cast vote on EVM → Verify on VVPAT.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section" style="padding: 80px 5%; max-width: 1200px; margin: 0 auto;">
+        <div class="section-header">
+            <h2>About VoteSmart AI</h2>
+            <p>Why we built this and how it helps you.</p>
+        </div>
+        <div class="about-content glass-panel" style="padding: 3rem; margin-top: 2rem;">
+            <h3 style="margin-bottom: 1rem; color: var(--accent-color); font-size: 1.5rem;">Empowering the Modern Voter</h3>
+            <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">
+                VoteSmart AI is designed to bridge the gap between citizens and the complex electoral process. We believe that an informed voter is the foundation of a strong democracy. Our AI-driven platform breaks down complex political jargon, guides you through registration, and provides unbiased candidate information.
+            </p>
+            <h3 style="margin-bottom: 1rem; color: var(--accent-color); font-size: 1.5rem;">Why Choose VoteSmart Over Others?</h3>
+            <ul style="list-style-position: inside; color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                <li><strong style="color: var(--text-primary);">Privacy First:</strong> Unlike other platforms, we don't track your political preferences or sell your data. Your chats remain private.</li>
+                <li><strong style="color: var(--text-primary);">Conversational AI:</strong> No more digging through confusing government websites. Just ask our assistant in natural language (English or Hinglish).</li>
+                <li><strong style="color: var(--text-primary);">Fake News Protection:</strong> Our built-in detection algorithms help you verify viral claims and WhatsApp forwards instantly.</li>
+                <li><strong style="color: var(--text-primary);">All-in-One Hub:</strong> From checking eligibility to comparing candidate records, everything you need is in one clean dashboard.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="about">
+        <div class="footer-content">
+            <div class="logo">
+                <i class="fa-solid fa-check-to-slot"></i>
+                <span>VoteSmart AI</span>
+            </div>
+            <p>A private, secure platform for voter education.</p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 VoteSmart AI. Built for Democracy.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
