@@ -86,6 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const message = chatInput.value.trim();
         if (!message) return;
 
+        if (message.length > 200) {
+            addMessage("Invalid input: Please keep your message under 200 characters.", 'bot');
+            return;
+        }
+
         // Clear input & show user message
         chatInput.value = '';
         addMessage(message, 'user');
